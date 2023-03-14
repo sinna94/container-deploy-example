@@ -1,0 +1,7 @@
+version: "3.9"
+
+services:
+  api:
+    image: spring-boot-k8s
+    ports:
+      - "8080:8080"
