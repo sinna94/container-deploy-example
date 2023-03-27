@@ -26,7 +26,7 @@ $ curl http://localhost/api/hello
 쿠버네티스 디플로이먼트와 로드밸런서 서비스로 기동
 ```shell
 $ cd k8s
-$ kubectl apply -f ./api-deployment.yaml
+$ kubectl apply -f ./api-deployment-lb.yaml
 
 # 조회
 $ curl http://localhost:8080/hello
@@ -36,5 +36,25 @@ $ curl http://localhost:8080/hello
 > hello, api-5576df565-6rpk5
 
 $ curl http://localhost:8080/hello
+> hello, api-5576df565-jz8ph
+```
+## k8s Ingress
+쿠버네티스 인그레스를 이용하여 로드밸런싱
+### minikube ingress 켜기
+```shell
+$ minikube addons enable ingress
+```
+```shell
+$ cd k8s
+$ kubectl apply -f ./api-deployment-ingress.yaml
+
+# 조회
+$ curl http://localhost/api/hello
+> hello, api-5576df565-b8rnt
+
+$ curl http://localhost/api/hello
+> hello, api-5576df565-6rpk5
+
+$ curl http://localhost/api/hello
 > hello, api-5576df565-jz8ph
 ```
